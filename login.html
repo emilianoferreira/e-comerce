@@ -14,7 +14,8 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <style>
-    html, body{
+    html,
+    body {
       height: 100%;
     }
 
@@ -34,20 +35,36 @@
       padding: 15px;
       margin: auto;
     }
+    
   </style>
 </head>
 
 <body class="text-center">
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 08/08/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
+
+    <form action="home.html" method="POST">
+      <h2>Sing in </h2>
+      <br>
+      <p>Username: <input type="text" name="name" placeholder="Juan123" required></p>
+
+      <p>Correo:
+        <input type="text" name="mail" placeholder="example@example.com" required>
+      </p>
+      <p>Contraseña <input type="password" size="15" minlength="8" required></p>
+      
+      <p> <a href="" target="blank">¿Olvidaste tu contraseña?</a>
+      
+        <p>
+        <input type="checkbox" name="condiciones"> Recuérdame
+      </p>
+
+      <input type="submit" value="Enviar" ">
+    </form>
+
   </div>
 
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
 </body>
+
 </html>
