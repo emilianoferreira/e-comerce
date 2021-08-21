@@ -27,6 +27,7 @@
       padding-top: 40px;
       padding-bottom: 40px;
       background-color: #f5f5f5;
+      background-image: C:\Users\emili\Documents\GitHub\e-comerce\img\login.png;
     }
 
     .signin {
@@ -34,37 +35,38 @@
       max-width: 330px;
       padding: 15px;
       margin: auto;
+      background-image: C:\Users\emili\Documents\GitHub\e-comerce\img\login.png;
     }
-    
   </style>
 </head>
 
 <body class="text-center">
   <div class="container p-5">
 
-    <form action="home.html" method="POST">
+    <form action="products.html">
       <h2>Sing in </h2>
       <br>
       <p>Username: <input type="text" name="name" placeholder="Juan123" required></p>
 
       <p>Correo:
-        <input type="text" name="mail" placeholder="example@example.com" required>
+        <input type="email" name="mail" placeholder="example@example.com" required>
       </p>
       <p>Contraseña <input type="password" size="15" minlength="8" required></p>
-      
+
       <p> <a href="" target="blank">¿Olvidaste tu contraseña?</a>
-      
-        <p>
+
+      <p>
         <input type="checkbox" name="condiciones"> Recuérdame
       </p>
 
-      <input type="submit" value="Enviar" ">
+      <input type="submit" value="Enviar" id="btnLogin" >
     </form>
 
   </div>
 
-  <script src="js/init.js"></script>
-  <script src="js/login.js"></script>
+  <script src=" js/init.js"></script>
+      <script src="js/login.js"></script>
+      <script src="C:\Users\emili\Desktop\jap\login_obligatorio.js"></script>
 </body>
 
 </html>
