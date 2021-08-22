@@ -26,7 +26,6 @@
       padding-top: 40px;
       padding-bottom: 40px;
       background-color: #ffffff;
-      image: url('../img/login.png');  
     } 
 
     .signin {
@@ -36,18 +35,19 @@
       margin: auto;
     }
     
-    .container{
-      border: 3cm black;
-      background-color: rgb(27, 113, 139);
+    #imagen{
+      size: 10cm;
     }
   </style>
 </head>
 
 <body class="text-center"> 
   <div class="container p-5">
+    <div id="imagen"><img src="img\login.png"></div>
     <form action="products.html"><h3  >Login</h3> <br>
-      <div id="user">Correo<input type="email" required ></div> <br>
-      <div id="pass">Contraseña<input type="password" id="pass" required minlength="8"></div> <br>
+      <input type="email" required placeholder="Correo"><br>
+
+      <input type="password" id="pass" required minlength="8" placeholder="Contraseña"> <br>
       <div><input type="submit" name="ingresar"></div>
     </form>
   </div>

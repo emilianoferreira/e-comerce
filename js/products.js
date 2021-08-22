@@ -2,9 +2,7 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 var currentProductsArray = [] //creo el arreglo vacio donde cargar 
-
 function showProductsList(){ //funcion  que muestra el json 
-
     let htmlContentToAppend = "";
     for(let i = 0; i < currentProductsArray.length; i++){
         let product = currentProductsArray[i];
@@ -17,10 +15,11 @@ function showProductsList(){ //funcion  que muestra el json
                 </div>
                 <div class="col">
                     <div class="d-flex w-100 justify-content-between">
-                        <h4 class="mb-1">`+ product.name + product.price +`</h4>
-                        <small class="text-muted">` + product.productCount + ` artículos</small>
+                        <h4 class="mb-1">`+ product.name +`</h4>
+                        <small class="text-muted">` + product.soldCount + ` artículos vendidos</small>
                     </div>
-                    <p class="mb-1">` + product.description + `</p>
+                    <p class="mb-1">` + product.description + `</p> <br>
+                    <h4 class="mb-1">`+ product.currency +" " + product.cost +`</h4>
                 </div>
             </div>
         </a>
@@ -28,10 +27,10 @@ function showProductsList(){ //funcion  que muestra el json
         document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
     }  
 }
-
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCTS_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
+            currentProductsArray =  resultObj.data;
           showProductsList();
         }
     });
