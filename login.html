@@ -25,8 +25,9 @@
       align-items: center;
       padding-top: 40px;
       padding-bottom: 40px;
-      background-color: #f5f5f5;
-    }
+      background-color: #ffffff;
+      image: url('../img/login.png');  
+    } 
 
     .signin {
       width: 100%;
@@ -34,17 +35,21 @@
       padding: 15px;
       margin: auto;
     }
+    
+    .container{
+      border: 3cm black;
+      background-color: rgb(27, 113, 139);
+    }
   </style>
 </head>
 
-<body class="text-center">
+<body class="text-center"> 
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 08/08/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
+    <form action="products.html"><h3  >Login</h3> <br>
+      <div id="user">Correo<input type="email" required ></div> <br>
+      <div id="pass">Contraseña<input type="password" id="pass" required minlength="8"></div> <br>
+      <div><input type="submit" name="ingresar"></div>
+    </form>
   </div>
 
   <script src="js/init.js"></script>
