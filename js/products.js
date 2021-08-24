@@ -32,6 +32,8 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (resultObj.status === "ok"){
             currentProductsArray =  resultObj.data;
           showProductsList();
+        }else{
+            alert (Error);
         }
     });
 }); 
