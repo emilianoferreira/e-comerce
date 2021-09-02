@@ -1,4 +1,4 @@
-const ORDER_ASC_BY_NAME = "AZ";
+const ORDER_ASC_BY_NAME = "AZ"; //se setean constantes para organizar
 const ORDER_DESC_BY_NAME = "ZA";
 const ORDER_BY_PROD_COUNT = "Cant.";
 var currentCategoriesArray = [];
@@ -6,27 +6,29 @@ var currentSortCriteria = undefined;
 var minCount = undefined;
 var maxCount = undefined;
 
+ //recibe 2 parametros, un criterio (de los definidos arriba en constantes) de orden y un arreglo para ordenar
 function sortCategories(criteria, array){
-    let result = [];
-    if (criteria === ORDER_ASC_BY_NAME)
-    {
+    let result = []; /* arreglo vacío para llenar con el orden */ 
+    if (criteria === ORDER_ASC_BY_NAME) //
+    {/* .sort para ordenar el arreglo de menor a mayor, al ser objetos, que ordene por el campo nombre, ordenándolos con la funcion anónima function(a,b), la cual toma el nombre de a y de b, los compara y si a<b = -1, devuelve a antes que b ordenados   */
         result = array.sort(function(a, b) {
-            if ( a.name < b.name ){ return -1; }
-            if ( a.name > b.name ){ return 1; }
-            return 0;
-        });
+            if ( a.name < b.name ){ return -1; } 
+            if ( a.name > b.name ){ return 1; } /*para que primero b después a */
+            return 0;/*ambos son iguales, los deja como estan */
+        }); /* en sort el -1 indica que el segundo elemento va antes que el primero */
     }else if (criteria === ORDER_DESC_BY_NAME){
-        result = array.sort(function(a, b) {
+        result = array.sort(function(a, b) {/*en products cambiar a a.cost */
             if ( a.name > b.name ){ return -1; }
             if ( a.name < b.name ){ return 1; }
-            return 0;
+            return 0; /* */
         });
     }else if (criteria === ORDER_BY_PROD_COUNT){
         result = array.sort(function(a, b) {
             let aCount = parseInt(a.productCount);
+            /*con parseInt convierto el dato con "" en numero entero */
             let bCount = parseInt(b.productCount);
 
-            if ( aCount > bCount ){ return -1; }
+            if ( aCount > bCount ){ return -1; } /*si es mayor va antes a, de ser al revés el b va antes  */
             if ( aCount < bCount ){ return 1; }
             return 0;
         });
@@ -68,8 +70,9 @@ function showCategoriesList(){
 
 function sortAndShowCategories(sortCriteria, categoriesArray){
     currentSortCriteria = sortCriteria;
-
+/*la funcion ordena y muestra la categoría, para usar una única función. LLama 2 funciones ordenar y mostar */
     if(categoriesArray != undefined){
+        /*guardó globalmente  el criterio y la lista  */
         currentCategoriesArray = categoriesArray;
     }
 
@@ -86,9 +89,9 @@ document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(CATEGORIES_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
             sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
-        }
+        }//cuando el contenido esté cargado 
     });
-
+/*video , explicar un if, nombrar sortandshow, en que botones se llaman  */
     document.getElementById("sortAsc").addEventListener("click", function(){
         sortAndShowCategories(ORDER_ASC_BY_NAME);
     });
