@@ -1,17 +1,14 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-function saveData() {
-    localStorage.setItem("userName", document.getElementById("user").value); //Guarda usuario en localstorage
-};
+
 
 function validar() {
-
-    let nombre = document.getElementById("user").value; // Setea la variable nombre con el usuario ingresado en el login
+    let user = document.getElementById("user").value; // Setea la variable nombre con el usuario ingresado en el login
     let pass = document.getElementById("pass").value;
 
-    if ((nombre !== "") && (pass !== "") && (nombre.length >= 6 && nombre.length <= 8)) {
-        saveData();
+    if ((user !== "") && (pass !== "") && (user.length >= 6 && user.length <= 8)) {
+        setUser();
         window.location.href = "products.html";
     }
     else {
@@ -19,10 +16,13 @@ function validar() {
     }
 };
 
+function setUser() {
+    let nombre = document.getElementById("user").value;
+    localStorage.setItem("user", nombre); //Guarda usuario en localstorage
+};
 
 
-
-document.addEventListener("DOMContentLoaded", function (e){
+document.addEventListener("DOMContentLoaded", function (e) {
 
 });
 
