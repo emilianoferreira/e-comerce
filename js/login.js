@@ -1,26 +1,31 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function (e){
-    function validar(){
- 
-    let nombre = document.getElementById("user").value;
+function saveData() {
+    localStorage.setItem("userName", document.getElementById("user").value); //Guarda usuario en localstorage
+};
+
+function validar() {
+
+    let nombre = document.getElementById("user").value; // Setea la variable nombre con el usuario ingresado en el login
     let pass = document.getElementById("pass").value;
-    if((nombre !=="")&& (pass!== "")){
-       
-        localStorage.setItem('nombreUsuario', nombre); //Guarda usuario en localstorage
-        
-        window.location.href="products.html";
-     
+
+    if ((nombre !== "") && (pass !== "") && (nombre.length >= 6 && nombre.length <= 8)) {
+        saveData();
+        window.location.href = "products.html";
     }
-    else{
-        alert("Para continuar, complete los campos con más de 8 dígitos c/u");
-    }}});
+    else {
+        alert("Para continuar, complete los campos con 6 u 8 dígitos c/u");
+    }
+};
 
 
-    document.addEventListener("DOMContentLoaded",function(e){  
-        document.getElementById("nombreUsuario").innerHTML="Bienvenid@ " +localStorage.nombreUsuario;
-     })
+
+
+document.addEventListener("DOMContentLoaded", function (e){
+
+});
+
 /*
 document.addEventListener("DOMContentLoaded", function (e) {
     function login() {
@@ -33,15 +38,15 @@ document.addEventListener("DOMContentLoaded", function (e) {
     window.onload = inicializar;
 });
 /*function validar(){
- 
+
     let nombre = document.getElementById("user").value;
     let pass = document.getElementById("pass").value;
     if((nombre !=="")&& (pass!== "")){
-       
+
         localStorage.setItem('nombreUsuario', nombre); //Guarda usuario en localstorage
-        
+
         window.location.href="products.html";
-     
+
     }
     else{
         alert("Para continuar, complete los campos con más de 8 dígitos c/u");
