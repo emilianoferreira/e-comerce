@@ -7,7 +7,8 @@ function validar() {
     let user = document.getElementById("user").value; // Setea la variable nombre con el usuario ingresado en el login
     let pass = document.getElementById("pass").value;
 
-    if ((user !== "") && (pass !== "") && (user.length >= 6 && user.length <= 8)) {
+    if ((user !== "") && (pass !== "") && (user.length >= 6 && user.length <= 8) && (pass.length >= 6 && pass.length <= 8)) {
+        
         setUser();
         window.location.href = "products.html";
     }
@@ -17,8 +18,7 @@ function validar() {
 };
 
 function setUser() {
-    let nombre = document.getElementById("user").value;
-    localStorage.setItem("user", nombre); //Guarda usuario en localstorage
+    localStorage.setItem("user", document.getElementById("user").value); //Guarda usuario en localstorage con key "user"
 };
 
 

@@ -41,12 +41,14 @@ var getJSONData = function (url) {
 }
 
 function getUser() {
-  let nombre = localStorage.getItem("user");//obtengo el dato guardado del campo usuario del local storage
-    document.getElementById("userName").innerHTML= ("nombre");
+ //inserto el nombre de usuario guardado, en el id="userName" de los html
+    document.getElementById("userName").innerHTML+= " " + localStorage.getItem("user");
+
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function (e) {
+document.addEventListener("DOMContentLoaded", function (e) { 
+  getUser(); //cuando el contenido haya cargado ejecuto la función 
 });
