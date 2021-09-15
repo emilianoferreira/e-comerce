@@ -8,9 +8,8 @@
 
 //parte 2. cargar products info url para mostrar toda la data de cada comentario del json 
 // Desafiate ponerle estrellas al score y mostrar el comentario mostrado  con inner+= para no perder lo que esta funcion hora data time o 
-const url = PRODUCT_INFO_URL;
 
-fetch(url)
+fetch(PRODUCT_INFO_URL)
     .then(respuesta => respuesta.json())
     .then(datos => {//del elemento insertar el dato del json
         document.getElementById('name').innerHTML += datos.name;
@@ -25,6 +24,15 @@ fetch(url)
     .catch(error => alert("Hubo un rerror: " + error));
 
 
+fetch(PRODUCT_INFO_COMMENTS_URL)
+    .then(response => response.json())
+    .then(datos => {
+        document.getElementById('score').innerHTML += datos.score;
+        document.getElementById('descriptionC').innerHTML += datos.description;
+        document.getElementById('user').innerHTML += datos.user;
+        document.getElementById('dateTime').innerHTML += datos.dateTime;
+    })
+    .catch(error => alert("Hubo un rerror: " + error));
 
 document.addEventListener("DOMCsontentLoaded", function (e) {
 
