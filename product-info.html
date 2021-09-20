@@ -24,9 +24,9 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item ">
-          <a class="navbar-brand mr-auto mt-2 mt-lg-0" style="color: #f9f4d2;">E-mercado</a>
+          <a class="navbar-brand mr-auto" style="color: #f9f4d2;">E-mercado</a>
         </li>
         <li class="nav-item ">
           <a class="nav-link" href="index.html">Home</a>
@@ -53,50 +53,78 @@
   </nav>
 
   <div class="container p-5">
-    <h3 id="name"></h3>
+    <h3 id="prodName"></h3>
     <dl>
       <dt>
       <dd>
-        <p id="description"></p>
+        <p id="prodDescription">Descripcion: </p>
       </dd>
       <dd>
-        <p id="cost">Precio: <span id="currency"></span> </p>
+        <p> Precio: <span id="prodCurrency"></span> <span id="prodCost"></span></p>
       </dd>
       <dd>
         <p id="soldCount"> Cantidad vendida: </p>
       </dd>
       <dd>
-        <p id="category">Categoria: </p>
-      </dd>
-      <dd>
-       <img id="images" src="" alt=""> foto
-      </dd>
-      <dd>
-        <p id="relatedProducts">Productos relacionados: </p>
+        <p id="prodCategory">Categoria: </p>
       </dd>
       </dt>
+
+      <dd>
+        <div class="row text-center text-lg-left pt-2" id="commentsImagesGallery"></div>
+      </dd>
+
     </dl>
   </div>
-  <div class="container"><h4>Comentarios</h4></div>
+
   <div class="container">
-    <dl>
-      <dt>
-      <dd>
-        <p id="score">Puntuacion: </p>
-      </dd>
-      <dd>
-        <p id="descriptionC">Descripcion: </p>
-      </dd>
-      <dd>
-        <p id="user">Usuario: </p>
-      </dd>
-      <dd>
-        <p id="dateTime">Fecha: </p>
-      </dd>
-      </dt>
-    </dl>
-  <h4>Escribe tu opinión sobre <span id="name"></span></h4>
+    <h4>Comentarios</h4>
   </div>
+  <div id="comentarios" class="container">
+    <div>
+      <dl>
+        <dt>
+        <dd>
+          <p id="score">Puntuacion: </p>
+        </dd>
+        <dd>
+          <p id="descriptionC">Descripcion: </p>
+        </dd>
+        <dd>
+          <p id="user">Usuario:
+          </p>
+        </dd>
+        <dd>
+          <p>Fecha: <span id="time"></span> </p>
+        </dd>
+        </dt>
+      </dl>
+    </div>
+  </div>
+    <div class="container">
+      <h4>Escribe tu opinión sobre</h4>
+      <form id="formulario">
+        <div class="form-group">
+          <label for="textarea"> </label> <br>
+          <textarea class="forrm-control" id="textarea" cols="60" rows="2" placeholder="Danos tu opinion"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="score">Puntua</label>
+          <select class="form-control" id="score">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+      <button type="button" class="" onclick="saveComment()">Comentar</button>
+      </form>
+
+      <div id="comentario"></div>
+    </div>
+  </div>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">
@@ -118,6 +146,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
+  <script src="js/comments.js"></script>
 </body>
 
 </html>
