@@ -77,36 +77,18 @@
     </dl>
   </div>
 
-  <div class="container">
+    <div class="container">
     <h4>Comentarios</h4>
-  </div>
-  <div id="comentarios" class="container">
-    <div>
-      <dl>
-        <dt>
-        <dd>
-          <p id="score">Puntuacion: </p>
-        </dd>
-        <dd>
-          <p id="descriptionC">Descripcion: </p>
-        </dd>
-        <dd>
-          <p id="user">Usuario:
-          </p>
-        </dd>
-        <dd>
-          <p>Fecha: <span id="time"></span> </p>
-        </dd>
-        </dt>
-      </dl>
-    </div>
-  </div>
+    </div><br>
+   <div id="comentariosN" class="container"></div>
+   <div id="comentarios" class="container"></div>
+ 
     <div class="container">
       <h4>Escribe tu opinión sobre</h4>
       <form id="formulario">
         <div class="form-group">
           <label for="textarea"> </label> <br>
-          <textarea class="forrm-control" id="textarea" cols="60" rows="2" placeholder="Danos tu opinion"></textarea>
+          <textarea class="form-control" id="textarea" cols="60" rows="2" placeholder="Danos tu opinion"></textarea>
         </div>
         <div class="form-group">
           <label for="score">Puntua</label>
@@ -118,12 +100,10 @@
             <option>5</option>
           </select>
         </div>
-      <button type="button" class="" onclick="saveComment()">Comentar</button>
+      <button type="button" class="btn btn-outline-info" onclick="saveComment()">Comentar</button>
       </form>
-
-      <div id="comentario"></div>
     </div>
-  </div>
+  
 
   <footer class="text-muted">
     <div class="container">
@@ -146,7 +126,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
-  <script src="js/comments.js"></script>
+  
 </body>
 
 </html>

@@ -44,6 +44,6 @@ function showComment() {
             </div>`
     }
 document.getElementById("comentarios").innerHTML = html;
-//document.getElementById("formulario").reset();
+document.getElementById("formulario").reset();
 }
 

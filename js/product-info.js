@@ -21,62 +21,78 @@
 }*/
 var product = {};
 var infoLista = [];
-function  showComment() {
-    // infoLista = sortComentariosByDate(comentariosLista);
+var comments = [];
+
+function getDate() {
+    let date = new Date();
+    let formatDate = date.getFullYear().toString().padStart(2, '0') + "/" + (date.getMonth() + 1).toString().padStart(2, '0') + "/" +date.getDate();
+
+    return formatDate;
+}
+
+function saveComment() {
+    let comment = {
+        message: document.getElementById("textarea").value,
+        date: getDate(),
+        score: drawStars(),
+        user: localStorage.getItem("user")
+    }
+    comments.push(comment);
+    showComment();
+}
+
+function drawStars(stars) {
+    let number = parseInt(stars);
+    let html = "";
+    for (let i = 1; i <= number; i++) {
+        html += '<span class= "fa fa-star checked"></span>'
+    }
+    for (let k = number + 1; k <= 5; k++) {
+        html += '<span class= "fa fa-star"></span>'
+    }
+    return html;
+}
+
+function showComment() {
+    let html = ""
+    for (let i = comments.length - 1; i >= 0; i--) {
+        let comment = comments[i];
+        html +=
+            `<div class="bd-example">
+                <dl>
+                    <dt>${comment.user}  ${comment.date}-${drawStars(comment.score)}</dt>
+                        <dd>${comment.message}</dd>
+                </dl><hr><br>
+            </div>`
+    }
+    document.getElementById("comentariosN").innerHTML = html;
+    document.getElementById("formulario").reset();
+}
+
+function showCommentario() {
+
     for (let i = 0; i < infoLista.length; i++) {
-      let comentarios = infoLista[i];
-  console.log(comentarios)
-    //   for (let i = 1; i <= 5; i++) {
-    //     if (i <= comentarios.score) {
-    //       COMENTARIOS.innerHTML += `<span class="fas fa-star checked"></span>`
-    //     } else {
-    //       COMENTARIOS.innerHTML += `<span class="fas fa-star"></span>`
-    //     }
-    //   }
-  
-    //   COMENTARIOS.innerHTML += `<div class="row"><div class="col"><div class="d-flex w-100 justify-content-between">
-    //       <h6 class="font-weight-bold">${comentarios.user}</h6>
-    //       <small class="text-muted">${comentarios.dateTime}</small></div>
-    //       <p class="mb-3">${comentarios.description}</p></div></div>
-    //       <hr class="mt-0">`
-    // };
-    // FORMULARIO_COMENTARIOS.reset();
-  }};
-// function showComment() {
-//     let htmlContentToAppend = "";
-//     for (let i = 0; i < infoLista.length; i++) {
-//         let comentario = infoLista[i];
-
-
-//         htmlContentToAppend += `<p>${comentario.user}</p>`
-
-//     }
-
-//     document.getElementById('comentarios').innerHTML += htmlContentToAppend;
-// };
-
-// console.log(infoLista);
-
-
-/*fetch(PRODUCT_INFO_COMMENTS_URL)
-    .then(response => response.json())
-    .then(info => {
-        infoLista = info
-        showComment();
-        console.log(infoLista);
-
-        /* let commentScore = document.getElementById('score');
-         let commentDescription = document.getElementById('descriptionC');
-         let commentUser = document.getElementById('user');
-         let commentDateTime = document.getElementById('time');
- 
-         commentScore.innerHTML += info.score;
-         commentDescription.innerHTML += info.description;
-         commentUser.innerHTML += info.user;
-         commentDateTime.innerHTML += info.dateTime;*/
+        let comentarios = infoLista[i];
+        htmlContentToAppend =
+            `<div class="bd-example">
+        <dl>
+            <dt>${comentarios.user}  ${comentarios.dateTime}  -  ${drawStars(comentarios.score)}</dt>
+                <dd>${comentarios.description}</dd>
+        </dl><hr><br>
+    </div>`
+        document.getElementById("comentarios").innerHTML += htmlContentToAppend;
+    }
+    document.getElementById("score").addEventListener("click", function () {
+        drawStars(score);
+    });
+}
 
 
 
+
+
+
+console.log(infoLista);
 
 function showImagesGallery(array) {
 
@@ -116,8 +132,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
             productCurrrencyHTML.innerHTML += product.currency
             productSoldCountHTML.innerHTML += product.soldCount;
             productCategoryHTML.innerHTML += product.category;
-
-
             showImagesGallery(product.images);
         }
     });
@@ -127,61 +141,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
         if (resultObj.status === "ok") {
             infoLista = resultObj.data;
 
-            showComment();
+            showCommentario();
         }
     });
-
-    // .catch(error => alert("Hubo un rerror: " + error));
 });
 
 
-/*fetch(PRODUCT_INFO_URL)
-    .then(respuesta => respuesta.json())
-    .then(datos => {//del elemento insertar el dato del json
-        document.getElementById('ame').innerHTML += datos.name;
-        document.getElementById('description').innerHTML += datos.description;
-        document.getElementById('cost').innerHTML += datos.cost;
-        document.getElementById('currency').innerHTML += datos.currency;
-        document.getElementById('soldCount').innerHTML += datos.soldCount;
-        document.getElementById('category').innerHTML += datos.category;
-    })
-
-showImagesGallery(datos.images)
-
-    .catch(error => alert("Hubo un rerror: " + error));*/
-
-
-/*document.getElementById('name').innerHTML += product.name;
-            document.getElementById('description').innerHTML += product.description;
-            document.getElementById('cost').innerHTML += product.cost;
-            document.getElementById('currency').innerHTML += product.currency;
-            document.getElementById('soldCount').innerHTML += product.soldCount;
-            document.getElementById('category').innerHTML += product.category;*/
-
-            //Muestro las imagenes en forma de galería
-/*
-funcion para que dependiendo del puntaje el color de las estrellas if span<2 .class color rojo
-
-bootstrap 4.3 copiar y pegar los links dados en download en órdenes link en head y scripts al final de body
-jquery y popper también */
-/* let contenedorSlider = document.getElementsByClassName("carousel-inner")[0]
-    for (let index = 0; index < currentProduct.images.length; index++) {
-        const imagen = currentProduct.images[index];
-        contenedorSlider.innerHTML +=
-        <div class="carousel-item">
-        <img src="${imagen}" class="d-block w-100" alt="...">
-      </div>
-
-    }
-    let imagenes = document.getElementsByClassName("carousel-item")
-    imagenes[0].className += " active"
-//inserto los controles del slider
-    contenedorSlider.innerHTML +=
-    </div>
-    <a class="carousel-control-prev" href="#carouselProducto" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselProducto" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span></a></div>} */
