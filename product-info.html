@@ -77,33 +77,44 @@
     </dl>
   </div>
 
-    <div class="container">
+  <div class="container">
     <h4>Comentarios</h4>
-    </div><br>
-   <div id="comentariosN" class="container"></div>
-   <div id="comentarios" class="container"></div>
- 
-    <div class="container">
-      <h4>Escribe tu opinión sobre</h4>
-      <form id="formulario">
-        <div class="form-group">
-          <label for="textarea"> </label> <br>
-          <textarea class="form-control" id="textarea" cols="60" rows="2" placeholder="Danos tu opinion"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="score">Puntua</label>
-          <select class="form-control" id="score">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
+  </div><br>
+  <div id="comentariosN" class="container"></div>
+  <div id="comentarios" class="container"></div>
+
+  <div class="container">
+    <h4>Escribe tu opinión sobre</h4>
+    <form id="formulario">
+      <div class="form-group">
+        <label for="textarea"> </label> <br>
+        <textarea class="form-control" id="textarea" cols="60" rows="2" placeholder="Danos tu opinion"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="score">Puntua</label>
+        <select class="form-control" id="score">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
       <button type="button" class="btn btn-outline-info" onclick="saveComment()">Comentar</button>
-      </form>
+    </form>
+  </div>
+  <br>
+  <hr>
+  <div class="container">
+    <div>
+      <h3>Productos relacionados: </h3>
+      <div id="prodRelated">
+
+      </div>
     </div>
-  
+
+  </div>
+
 
   <footer class="text-muted">
     <div class="container">
@@ -126,7 +137,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
-  
+
 </body>
 
 </html>

@@ -19,13 +19,14 @@
 /*for (let i=1; imenorigual 5; i++){
     if (i menorigual score ) 
 }*/
-var product = {};
+var product = [];
+var relatedProd = {};
 var infoLista = [];
 var comments = [];
 
 function getDate() {
     let date = new Date();
-    let formatDate = date.getFullYear().toString().padStart(2, '0') + "/" + (date.getMonth() + 1).toString().padStart(2, '0') + "/" +date.getDate();
+    let formatDate = date.getFullYear().toString().padStart(2, '0') + "-" + (date.getMonth() + 1).toString().padStart(2, '0') + "-" + date.getDate();
 
     return formatDate;
 }
@@ -88,12 +89,6 @@ function showCommentario() {
 }
 
 
-
-
-
-
-console.log(infoLista);
-
 function showImagesGallery(array) {
 
     let htmlContentToAppend = "";
@@ -111,6 +106,17 @@ function showImagesGallery(array) {
 
         document.getElementById("commentsImagesGallery").innerHTML = htmlContentToAppend;
     }
+}
+
+function showProductsRelated(array) {
+    html = "";
+    for (let i = 0; i < array.length; i++) {
+        let related = array[i];
+
+        html += `<div> <p>${product[relatedProd].name}</p> </div>`
+    }
+
+    document.getElementById("prodRelated").innerHTML = html;
 }
 
 document.addEventListener("DOMContentLoaded", function (e) {
@@ -144,6 +150,18 @@ document.addEventListener("DOMContentLoaded", function (e) {
             showCommentario();
         }
     });
+
+    getJSONData(PRODUCT_INFO_URL).then(resultObj1 => {
+        if (resultObj1.status === "ok") {
+            product  = resultObj1.data
+            getJSONData(PRODUCTS_URL).then(resultObj2 => {
+                if (resultObj2 === "ok") {
+                    relatedProd = resultObj2.data;
+                    showProductsRelated(product.relatedProducts);
+                }
+            })
+        }
+    })
 });
 
 
