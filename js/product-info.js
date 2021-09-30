@@ -19,10 +19,11 @@
 /*for (let i=1; imenorigual 5; i++){
     if (i menorigual score ) 
 }*/
-var product = [];
+var product = {};
 var relatedProd = {};
 var infoLista = [];
 var comments = [];
+var related = [];
 
 function getDate() {
     let date = new Date();
@@ -108,40 +109,27 @@ function showImagesGallery(array) {
     }
 }
 
-function showProductsRelated(array) {
-    html = "";
+function printProductsRelated(array) {
+    let html = "";
     for (let i = 0; i < array.length; i++) {
-        let related = array[i];
+        let position = array[i];
 
-        html += `<div> <p>${product[relatedProd].name}</p> </div>`
+        html += 
+        `<div class="card" style="margin:20px; width: 18rem;">
+            <img class="card-img-top" src="${related[position].imgSrc}" alt="Card image cap">
+            <div class="card-body">
+          <h5 class="card-title">${related[position].name}</h5>
+          <p class="card-text">${related[position].description}</p>
+          <a href="products.html" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+        </div>`
     }
 
-    document.getElementById("prodRelated").innerHTML = html;
+    document.getElementById("prodRelated").innerHTML += html;
 }
 
 document.addEventListener("DOMContentLoaded", function (e) {
-
-    getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
-        if (resultObj.status === "ok") {
-            product = resultObj.data;
-
-            let productNameHTML = document.getElementById('prodName');
-            let productDescriptionHTML = document.getElementById('prodDescription');
-            let prodCostHTML = document.getElementById('prodCost');
-            let productCurrrencyHTML = document.getElementById('prodCurrency');
-            let productSoldCountHTML = document.getElementById('soldCount')
-            let productCategoryHTML = document.getElementById('prodCategory');
-
-            productNameHTML.innerHTML += product.name;
-            productDescriptionHTML.innerHTML += product.description;
-            prodCostHTML.innerHTML += product.cost;
-            productCurrrencyHTML.innerHTML += product.currency
-            productSoldCountHTML.innerHTML += product.soldCount;
-            productCategoryHTML.innerHTML += product.category;
-            showImagesGallery(product.images);
-        }
-    });
-
 
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
@@ -151,17 +139,33 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
     });
 
-    getJSONData(PRODUCT_INFO_URL).then(resultObj1 => {
+    getJSONData(PRODUCTS_URL).then(resultObj1 => {
         if (resultObj1.status === "ok") {
-            product  = resultObj1.data
-            getJSONData(PRODUCTS_URL).then(resultObj2 => {
-                if (resultObj2 === "ok") {
-                    relatedProd = resultObj2.data;
-                    showProductsRelated(product.relatedProducts);
+            related = resultObj1.data
+            getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
+                if (resultObj.status === "ok") {
+                    product = resultObj.data;
+
+                    let productNameHTML = document.getElementById('prodName');
+                    let productDescriptionHTML = document.getElementById('prodDescription');
+                    let prodCostHTML = document.getElementById('prodCost');
+                    let productCurrrencyHTML = document.getElementById('prodCurrency');
+                    let productSoldCountHTML = document.getElementById('soldCount')
+                    let productCategoryHTML = document.getElementById('prodCategory');
+
+                    productNameHTML.innerHTML += product.name;
+                    productDescriptionHTML.innerHTML += product.description;
+                    prodCostHTML.innerHTML += product.cost;
+                    productCurrrencyHTML.innerHTML += product.currency
+                    productSoldCountHTML.innerHTML += product.soldCount;
+                    productCategoryHTML.innerHTML += product.category;
+                    showImagesGallery(product.images);
+
+                    printProductsRelated(product.relatedProducts);
                 }
-            })
+            });
+
         }
     })
-});
-
+})
 
