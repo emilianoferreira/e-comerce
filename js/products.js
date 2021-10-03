@@ -82,7 +82,25 @@ function sortAndShowProducts(sortCriteria, categoriesArray) {
     showProductsList();
 }
 
+function buscar() {
+    var input, filter, links, h3, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
 
+    links = document.getElementsByTagName("h3");
+    for (i = 0; i < links.length; i++) {
+        h3 = links[i];
+        txtValue = h3.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            h3.parentNode.parentNode.parentNode.style.display = "";
+
+
+        } else {
+            h3.parentNode.parentNode.parentNode.style.display = "none";
+
+        }
+    }
+}
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCTS_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {

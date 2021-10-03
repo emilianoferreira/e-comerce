@@ -100,7 +100,7 @@ function showImagesGallery(array) {
         htmlContentToAppend += `
         <div class="col-lg-3 col-md-4 col-6">
             <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
+                <img class="img-fluid img-thumbnail" src="` + imageSrc + `" >
             </div>
         </div>
         `
@@ -115,15 +115,16 @@ function printProductsRelated(array) {
         let position = array[i];
 
         html += 
-        `<div class="card" style="margin:20px; width: 18rem;">
-            <img class="card-img-top" src="${related[position].imgSrc}" alt="Card image cap">
+    `
+        <div href="products.html" class="card" style="margin:20px; width: 18rem;">
+            <img class="card-img-top" src="${related[position].imgSrc}">
             <div class="card-body">
-          <h5 class="card-title">${related[position].name}</h5>
-          <p class="card-text">${related[position].description}</p>
-          <a href="products.html" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title">${related[position].name} </h5>
+                <p class="card-text">${related[position].description}</p>
+                <h6>${related[position].currency} ${related[position].cost}</h6>
             </div>
-            </div>
-        </div>`
+        </div>
+    `
     }
 
     document.getElementById("prodRelated").innerHTML += html;

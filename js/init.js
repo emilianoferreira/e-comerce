@@ -41,14 +41,39 @@ var getJSONData = function (url) {
 }
 
 function getUser() {
- //inserto el nombre de usuario guardado, en el id="userName" de los html
-    document.getElementById("userName").innerHTML+= " " + localStorage.getItem("user");
+  //inserto el nombre de usuario guardado, en el id="userName" de los html
+  document.getElementById("userName").innerHTML += " " + localStorage.getItem("user");
 
+}
+
+
+
+//
+function boton() {
+  let html = "";
+  let nombre = localStorage.getItem("user");
+  html += `<div class="dropdown">
+  <button class="btn btn-primary btn-md dropdown-toggle" type="button" id="dropdownMenuButton"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">`+ nombre + `
+   
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="cart.html">Mi Carrito</a>
+    <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
+    <a class="dropdown-item" href="login.html" onclick="cerrarSesion()" >Cerrar Sesión</a>
+  </div>
+</div> `
+
+  document.getElementById("btn").innerHTML = html;
+}
+
+function cerrarSesion() {
+  localStorage.removeItem("user")
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function (e) { 
-  getUser(); //cuando el contenido haya cargado ejecuto la función 
+//elementos HTML presentes.//cuando el contenido haya cargado ejecuto la función 
+document.addEventListener("DOMContentLoaded", function (e) {
+  boton();
 });
