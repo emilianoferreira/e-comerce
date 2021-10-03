@@ -144,4 +144,5 @@ a.custom-card:hover {
   border: #f9f4d2;
   background-color: rgb(36, 79, 114);
   color: rgb(184, 184, 184);
+  margin-left: 45px;
 }

@@ -117,7 +117,7 @@ function printProductsRelated(array) {
         html += 
     `
         <div href="products.html" class="card" style="margin:20px; width: 18rem;">
-            <img class="card-img-top" src="${related[position].imgSrc}">
+           <a href="products.html"><img class="card-img-top" src="${related[position].imgSrc}"></a> 
             <div class="card-body">
                 <h5 class="card-title">${related[position].name} </h5>
                 <p class="card-text">${related[position].description}</p>
