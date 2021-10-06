@@ -20,7 +20,6 @@
     if (i menorigual score ) 
 }*/
 var product = {};
-var relatedProd = {};
 var infoLista = [];
 var comments = [];
 var related = [];

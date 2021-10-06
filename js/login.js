@@ -14,6 +14,7 @@ function validar() {
     }
     else {
         alert("Para continuar, complete los campos con 6 u 8 dígitos c/u");
+        window.location.href = "login.html";
     }
 };
 
