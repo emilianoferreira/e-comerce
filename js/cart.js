@@ -10,7 +10,7 @@ function mostrarProductos(array) {
         html +=
             `
     <div>
-        <table class>
+        <table>
         <tr >
             <th>Producto</th>
             <th>Precio</th>
