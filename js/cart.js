@@ -79,4 +79,5 @@ document.addEventListener("DOMContentLoaded", function (e) {
             "currency": "UYU",
             "src": "img/tree1.jpg"
         }
+        asdasd
 */
