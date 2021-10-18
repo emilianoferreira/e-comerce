@@ -8,8 +8,9 @@ function mostrarProductos(array) {
     for (let i = 0; i < array.length; i++) {
         const element = array[i];
         html +=
-            ` 
-    <table style="border:black solid 3px">
+            `
+    <div>
+        <table class>
         <tr >
             <th>Producto</th>
             <th>Precio</th>
@@ -17,20 +18,22 @@ function mostrarProductos(array) {
             <th>Subtotal</th>
         </tr>
         <tr>
-            
             <td><img style="height: 120px;" src="${element.src}"> ${element.name}</td>
             <td>  ${element.currency}${element.unitCost}</td>
             <td><input type="number" class="productCount" id="${[i]}" data-cost="${element.unitCost}" value=${element.count}></input></td>
-            <td id="subtotal${[i]}" data-currency="${element.currency}" data-subtotal="0">${element.currency} ${element.count * element.unitCost}</td>
+            <td id="subtotal${[i]}" currency="${element.currency}" data-subtotal="0">${element.currency} ${element.count * element.unitCost}</td>
         </tr>
-    </table>`
+        </table>
+    </div>
+    `
     }
 
 
     document.getElementById("productos_carrito").innerHTML += html
-    eventsCounts();
+    juntarData();
 }
-function eventsCounts() {
+
+function juntarData() {
     let inputs = document.getElementsByClassName("productCount");
     for (let input of inputs) {
         input.addEventListener("change", (ev) => {
@@ -45,12 +48,16 @@ function eventsCounts() {
 }
 
 function subtotal(cost, count, id, currency) {
-    let subtotal =  count * cost
-    if (subtotal >= 0) { 
-        document.getElementById("subtotal" + id).innerHTML =  + subtotal; }
-        else {alert("Ingrese como minimo 1 articulo o deje la bandeja en 0") 
-        subtotal=0}
-console.log(currency)
+    console.log(currency)
+    let subtotal = count * cost
+    if (subtotal >= 0) {
+        document.getElementById("subtotal" + id).innerHTML = + subtotal;
+    }
+    else {
+        alert("Ingrese como minimo 1 articulo o deje la bandeja en 0")
+        subtotal = 0
+    }
+
 }
 
 
