@@ -113,8 +113,8 @@ function printProductsRelated(array) {
     for (let i = 0; i < array.length; i++) {
         let position = array[i];
 
-        html += 
-    `
+        html +=
+            `
         <div href="products.html" class="card" style="margin:20px; width: 18rem;">
            <a href="products.html"><img class="card-img-top" src="${related[position].imgSrc}"></a> 
             <div class="card-body">
@@ -164,7 +164,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     printProductsRelated(product.relatedProducts);
                 }
             });
-
         }
     })
 })

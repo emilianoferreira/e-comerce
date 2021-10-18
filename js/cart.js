@@ -1,6 +1,75 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function(e){
+var productosCarrito = [];
 
+function mostrarProductos(array) {
+    let html = ""
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i];
+        html +=
+            ` 
+    <table style="border:black solid 3px">
+        <tr >
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+        </tr>
+        <tr>
+            
+            <td><img style="height: 120px;" src="${element.src}"> ${element.name}</td>
+            <td>  ${element.currency}${element.unitCost}</td>
+            <td><input type="number" class="productCount" id="${[i]}" data-cost="${element.unitCost}" value=${element.count}></input></td>
+            <td id="subtotal${[i]}" data-currency="${element.currency}" data-subtotal="0">${element.currency} ${element.count * element.unitCost}</td>
+        </tr>
+    </table>`
+    }
+
+
+    document.getElementById("productos_carrito").innerHTML += html
+    eventsCounts();
+}
+function eventsCounts() {
+    let inputs = document.getElementsByClassName("productCount");
+    for (let input of inputs) {
+        input.addEventListener("change", (ev) => {
+            let cost = parseFloat(ev.target.dataset.cost);
+            let count = parseInt(ev.target.value);
+            let id = ev.target.getAttribute("id");
+            let currency = ev.target.currency
+
+            subtotal(cost, count, id, currency)
+        })
+    }
+}
+
+function subtotal(cost, count, id, currency) {
+    let subtotal =  count * cost
+    if (subtotal >= 0) { 
+        document.getElementById("subtotal" + id).innerHTML =  + subtotal; }
+        else {alert("Ingrese como minimo 1 articulo o deje la bandeja en 0") 
+        subtotal=0}
+console.log(currency)
+}
+
+
+document.addEventListener("DOMContentLoaded", function (e) {
+    getJSONData(CART_INFO_URL).then(resultObj => {
+        if (resultObj.status === "ok") {
+            productosCarrito = resultObj.data.articles
+            console.log(productosCarrito);
+            mostrarProductos(productosCarrito);
+        }
+    })
 });
+/*{
+    "articles": [
+        {
+            "name": "Pino de olor para el auto",
+            "count": 2,
+            "unitCost": 100,
+            "currency": "UYU",
+            "src": "img/tree1.jpg"
+        }
+*/
