@@ -34,8 +34,7 @@
 </head>
 
 <body>
-  <nav class=" navbar navbar-expand-sm navbar-dark sticky-top "
-    style="background-color: #27506d;">
+  <nav class=" navbar navbar-expand-sm navbar-dark sticky-top " style="background-color: #27506d;">
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,11 +58,11 @@
         <li class="nav-item">
           <a class="nav-link" href="sell.html">Vender</a>
         </li>
-     
+
       </ul>
       <ul class="navbar-nav">
         <li class="nav-item" id="btn">
-          <a class="nav-link " href="" id="userName">Bienvenido</a>
+          <a class="nav-link " href="" id="userName"></a>
         </li>
       </ul>
     </div>
@@ -72,19 +71,56 @@
 
   </nav>
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+    <div>
+      <h2>Mis Datos</h2>
+      <p id="nombreUsuario">Nombre: </p>
+      <p id="edadUsuario">Edad:</p>
+      <p id="emailUsuario">E-mail:</p>
+      <p id="contactoUsuario">Contacto:</p>
     </div>
+    <div>
+      <h2>Editar Mis Datos</h2>
+      <form action="">
+        <form>
+          <div class="row">
+            <div class="col">
+              <input type="text" required class="form-control" id="nameProfile" placeholder="Nombres">
+            </div>
+            <div class="col">
+              <input type="text" required class="form-control" id="lasName" placeholder="Apellidos">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="formGroupExampleInput2"></label>
+            <input type="text" required class="form-control" id="email" placeholder="e-mail">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2"></label>
+            <input type="text" required class="form-control" id="cellphone" placeholder="Ej 098765432">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2"></label>
+            <input type="text"  required class="form-control" id="direccion" placeholder="Dirección">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2"></label>
+            <input type="text"  required class="form-control" id="edad" placeholder="Edad">
+          </div>
+          <div class="form-group">
+            <input type="button" required class="btn btn-primary" id="btnProfile" value="Guardar" onclick="guardarDatos() ">
+            
+          </div>
+        </form>
+       
+    </div>
+    <footer class="text-muted bg-light">
+      <div class="container">
+        <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+        <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+      </div>
+    </footer>
   </div>
-  <footer class="text-muted bg-light">
-    <div class="container">
-      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-    </div>
-  </footer>
   <div class="alert fade alert-success" role="alert" id="alertResult">
     <span id="resultSpan"></span>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">

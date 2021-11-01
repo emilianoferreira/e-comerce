@@ -44,27 +44,56 @@ function showProductsList() { //funcion  que muestra el json
     let htmlContentToAppend = "";
     for (let i = 0; i < currentProductsArray.length; i++) {
         let product = currentProductsArray[i];
-/*con parseInt convierto el dato con "" en numero entero */
+        /*con parseInt convierto el dato con "" en numero entero */
         if (((minCount == undefined) || (minCount != undefined && product.cost >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && product.cost <= maxCount))) {
 
             htmlContentToAppend += `
-        <a href="product-info.html" class="list-group-item list-group-item-action">
-            <div class="row"> 
-                <div class="col-3">
-                    <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
-                </div>
-                <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h4 class="mb-1">`+ product.name + `</h4>
-                        <small class="text-muted">` + product.soldCount + ` artículos vendidos</small>
-                    </div>
-                    <p class="mb-1">` + product.description + `</p> <br>
-                    <h4 class="mb-1">`+ product.currency + " " + product.cost + `</h4>
-                </div>
-            </div>
-        </a>
+
+    <div class="col-md-6">  
+    <a href="product-info.html" class="list-group-item list-group-item-action">
+         <div class="card w-100">
+                <img src="${product.imgSrc}" class="card-img-top" >
+            <div class="card-body">
+            <h5 class="card-title">${product.name}</h5>
+         <p class="card-text">${product.description}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+    <li class="list-group-item">${product.currency} ${product.cost} | ${product.soldCount} Vendidos</li>   
+  </ul>
+  
+      </div></a>
+      </div>
+
+        
+        
         `
+            document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
+        }
+    }
+}
+function cambiarVista() {
+    let htmlContentToAppend = "";
+    for (let i = 0; i < currentProductsArray.length; i++) {
+        let product = currentProductsArray[i];
+        /*con parseInt convierto el dato con "" en numero entero */
+        if (((minCount == undefined) || (minCount != undefined && product.cost >= minCount)) &&
+            ((maxCount == undefined) || (maxCount != undefined && product.cost <= maxCount))) {
+
+            htmlContentToAppend += `<div class="row "> 
+            <a href="product-info.html" class="list-group-item list-group-item-action">
+            <div class="col-6 ">
+                <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
+            </div>
+            <div class="col">
+                <div class="d-flex w-100 justify-content-between">
+                    <h4 class="mb-1">`+ product.name + `</h4>
+                    <small class="text-muted">` + product.soldCount + ` artículos vendidos</small>
+                </div>
+                <p class="mb-1">` + product.description + `</p> <br>
+                <h4 class="mb-1">`+ product.currency + " " + product.cost + `</h4>
+            </div>
+        </div></a>`
             document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
         }
     }
@@ -72,7 +101,7 @@ function showProductsList() { //funcion  que muestra el json
 
 function sortAndShowProducts(sortCriteria, categoriesArray) {
     currentSortCriteria = sortCriteria;
-     /*la funcion ordena y muestra la categoría, para usar una única función. LLama 2 funciones ordenar y mostar */
+    /*la funcion ordena y muestra la categoría, para usar una única función. LLama 2 funciones ordenar y mostar */
     if (categoriesArray != undefined) {
         /*guardó globalmente  el criterio y la lista  */
         currentProductsArray = categoriesArray;
@@ -109,9 +138,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
         showProductsList();
     });
 
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
+    //Función que se ejecuta una vez que se haya lanzado el evento de
+    //que el documento se encuentra cargado, es decir, se encuentran todos los
+    //elementos HTML presentes.
     document.getElementById("sortAsc").addEventListener("click", function () {
         sortAndShowProducts(ORDER_ASC_BY_COST);
     });

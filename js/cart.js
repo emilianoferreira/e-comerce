@@ -9,7 +9,24 @@ function mostrarProductos(array) {
         const element = array[i];
         html +=
             `
-    <div>
+            <div class="container" style="background-color: lightgreen;">
+            <div class="row">
+              <div class="col-5">Productos</div>
+              <div class="col-2">Precio</div>
+              <div class="col-2">Cantidad</div>
+              <div class="col-3-">Subtotal</div>
+              <div class="w-100"></div>
+              <div class="col-5"><img style="height: 100px;" src="${element.src}"></div>
+              <div class="col-2"> ${element.currency}${element.unitCost}</div>
+              <div class="col-2" ><input style=" width: 100px;" type="number" class="productCount" id="${[i]}" data-cost="${element.unitCost}" value=${element.count}></input></div>
+              <div class="col-3" id="subtotal${[i]}" currency="${element.currency}" data-subtotal="0">${element.currency} ${element.count * element.unitCost}</div>
+            </div>
+          </div>
+    
+    `
+    }
+
+/*<div>
         <table>
         <tr >
             <th>Producto</th>
@@ -24,11 +41,7 @@ function mostrarProductos(array) {
             <td id="subtotal${[i]}" currency="${element.currency}" data-subtotal="0">${element.currency} ${element.count * element.unitCost}</td>
         </tr>
         </table>
-    </div>
-    `
-    }
-
-
+    </div> */
     document.getElementById("productos_carrito").innerHTML += html
     juntarData();
 }

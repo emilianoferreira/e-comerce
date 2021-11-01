@@ -28,14 +28,20 @@
       }
     }
 
-    td,th {
+    #inputCantidad {
+      width: 10px;
+      ;
+    }
+
+    td,
+    th {
       padding-left: 5px;
       padding-right: 30px;
       margin-bottom: 20px;
       padding-bottom: 20px;
-     
+
       border: #0a94b4 1px solid;
-      text-align:center;
+      text-align: center;
     }
   </style>
 
@@ -80,10 +86,15 @@
 
   </nav>
   <div class="container p-5">
-    <div id="productos_carrito" class="row">
+    <div id="productos_carrito" class="row"></div>
+    <div>
+      <p>Premium (2-5 días)<input type="radio" name="" id="">
+        Express (5-8 dias) <input type="radio" name="" id="">
+        Standar (12-15 días) <input type="radio" name="" id=""> </p>
 
     </div>
   </div>
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>

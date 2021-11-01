@@ -40,7 +40,7 @@
         <li class="nav-item">
           <a class="nav-link" href="sell.html">Vender</a>
         </li>
-      
+
       </ul>
       <ul class="navbar-nav">
         <li class="nav-item" id="btn">
@@ -61,23 +61,39 @@
         <h2>Productos</h2>
         <p class="lead">Verás aquí todos los productos disponibles</p>
       </div>
-      <div class="row">
-        <div class="col md-auto text-left">
-          <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
-            <div></div> <label class="btn btn-light" id="sortAsc">
-              <input type="radio" name="options" autocomplete="off" checked><i
-                class="fas fa-sort-amount-down-alt mr-1"></i>$
-            </label>
-            <label class="btn btn-light" id="sortDesc">
-              <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>$
-            </label>
-            <label class="btn btn-light" id="sortByRel">
-              <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Vendidos
-            </label>
-            <div class=""><input type="text" id="myInput" onkeyup="buscar()" placeholder="Buscar productos"
-                title="Type in a name">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4  text-left col-sm-12">
+            <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
+              <div></div> <label class="btn btn-light" id="sortAsc">
+                <input type="radio" name="options" autocomplete="off" checked><i
+                  class="fas fa-sort-amount-down-alt mr-1"></i>$
+              </label>
+              <label class="btn btn-light" id="sortDesc">
+                <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>$
+              </label>
+              <label class="btn btn-light" id="sortByRel">
+                <input type="radio" name="options" autocomplete="off"><i
+                  class="fas fa-sort-amount-down mr-1"></i>Vendidos
+              </label>
             </div>
           </div>
+
+          <div class="col-md-4 text-center col-sm-12"><input type="text" id="myInput" onkeyup="buscar()"
+              placeholder="Buscar productos" title="Type in a name">
+          </div>
+          <div class="col-md-4 text-right col-sm-12 d-sm-none d-md-block dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Cambiar vista
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#" onclick="cambiarVista()">Lista</a>
+              <a class="dropdown-item" href="#" onclick="showProductsList()">Cuadricula</a>
+            </div>
+
+          </div>
+
 
         </div>
         <div class="row justify-content-end">
@@ -104,11 +120,11 @@
       </div>
     </div>
 
+
     <div class="container">
-      <div class="row">
-        <div class="list-group" id="prod-list-container"></div>
-      </div>
+      <div class="row" id="prod-list-container"></div>
     </div>
+    
   </main>
 
   <footer class="text-muted bg-light">
