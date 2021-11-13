@@ -86,14 +86,257 @@
 
   </nav>
   <div class="container p-5">
-    <div id="productos_carrito" class="row"></div>
-    <div>
-      <p>Premium (2-5 días)<input type="radio" name="" id="">
-        Express (5-8 dias) <input type="radio" name="" id="">
-        Standar (12-15 días) <input type="radio" name="" id=""> </p>
+    <div style="text-align: center;">
+      <h2>Carrito</h2>
+      <p>Verás aquí los productos de tu carrito</p>
+    </div>
+    <br>
+    <div id="productos_carrito" class="row">
+
+      <div class="col-md-5">
+        <h4>Productos</h4>
+      </div>
+      <div class="col-md-2">
+        <h4>Precio</h4>
+      </div>
+      <div class="col-md-2">
+        <h4>Cantidad</h4>
+      </div>
+      <div class="col-md-2">
+        <h4>Subtotal</h4>
+      </div>
+      <div class="col-1">
+        <i class="fa-regular fa-trash-can"></i>
+      </div>
 
     </div>
+
+    <hr><br>
+    <div>
+      <div>
+        <h3>Metodo de envio <i class="fas fa-info-circle" style="size: 2px; color: #27506d;"
+            class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModalCenter"></i></h3>
+        <br>
+        <div class="row botonesEnvio">
+          <div class="col-md-4">
+            <input type="button" class="btn btn-primary btnEnvio btn-lg btn-block" name="tipoEnvio" value="Premium" id="tipoEnvio1">
+          </div>
+          <div class="col-md-4">
+            <input type="button" class="btn btn-primary btnEnvio btn-lg btn-block " name="tipoEnvio" value="Express" id="tipoEnvio2">
+          </div>
+          <div class="col-md-4">
+            <input type="button" class="btn btn-primary btnEnvio btn-lg btn-block " name="tipoEnvio" value="Standar" id="tipoEnvio3">
+          </div>
+          <div>
+
+            <!-- Button trigger modal -->
+            <!-- <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModalCenter">
+              <i class="fas fa-info-circle"></i> Envíos
+            </button> -->
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title " id="exampleModalCenterTitle">Información sobre envíos</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Dependiendo del tipo de envío seleccionado, será el monto y tiempo de entrega estimado.
+
+                    Nuestro deperatamento de envíos llega a todo el territorio Nacional.
+                    <hr>
+                    <h5>Standar</h5> Precio 5% del subtotal despacho estimado 12~15 días.
+                    <hr>
+                    <h5>Express</h5> Precio 7% del subtotal, despacho estimado 5~8 días.
+                    <hr>
+                    <h5>Premium</h5> Precio 15% del subtotal, despacho estimado 2~5 días.
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <hr>
+      <br>
+
+      <h3>Direccion de envio</h3>
+      <form class="needs-validation" novalidate>
+
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="validationCustom03">Direccion</label>
+            <input type="text" class="form-control" id="validationCustom01" placeholder="25 de Mayo esquina Rodó"
+              required>
+            <div class="invalid-feedback">
+              Ingrese su domicilio.
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationCustom04">Departamento</label>
+            <input type="text" class="form-control" id="validationCustom02" placeholder="Rocha" required>
+            <div class="invalid-feedback">
+              Ingrese su departamento de residencia.
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationCustom05">Codigo postal </label>
+            <input type="text" class="form-control" id="validationCustom03" placeholder="27001" required>
+            <div class="invalid-feedback">
+              Ingrese el código postal de su localidad.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+            <label class="form-check-label" for="invalidCheck">
+              Acepto términos y condiciones
+            </label>
+
+          </div>
+        </div>
+
+      </form>
+
+      <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+          'use strict';
+          window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+              form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === false) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+              }, false);
+            });
+          }, false);
+        })();
+      </script>
+
+
+      
+      <!-- Costos -->
+      <div>
+        <hr class="mb-4">
+        <h3 class="mb-3">Costos</h3>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">Subtotal</h6>
+              <small class="text-muted">De los productos del carrito</small>
+            </div>
+            <span class="text-muted" id="SubtotalGnral">-</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">Porcentaje</h6>
+              <small class="text-muted">Según el tipo de envío</small>
+            </div>
+            <span class="text-muted" id="comisionEnvio">-</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total ($)</span>
+            <strong id="totalCarrito">-</strong>
+          </li>
+        </ul>
+        <hr class="mb-4">
+      </div>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn btn-outline-success btn-lg btn-block" id="btnFormaPago">
+        Comprar
+      </button>
+
+      <!-- Modal -->
+      <form>
+        <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Formas de pago</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <div class="modal-body">
+                <div class="form-row">
+                  <div class="custom-control custom-radio">
+                    <input id="tarjeta" name="formaPago" type="radio" class="custom-control-input">
+                    <label class="custom-control-label">Tarjeta de credito</label>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label for="validationCustom03">Número de tarjeta</label>
+                    <input type="text" class="form-control" id="validationCustom04" placeholder="---- ---- ---"
+                      required>
+                    <div class="invalid-feedback">
+                      Ingrese el número de su tarjeta.
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom04">Vencimiento</label>
+                    <input type="text" class="form-control" id="validationCustom05" placeholder="01/01" required>
+                    <div class="invalid-feedback">
+                      Ingrese el vencimiento de su tarjeta
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationCustom05">Codigo </label>
+                    <input type="text" class="form-control" id="validationCustom06" placeholder="123" required>
+                    <div class="invalid-feedback">
+                      Ingrese el código de su tarjeta.
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="form-row">
+                  <div class="custom-control custom-radio">
+                    <input id="banco" name="formaPago" type="radio" class="custom-control-input">
+                    <label class="custom-control-label" >Transferencia bancaria</label>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-12 mb-3">
+                    
+                    <input type="text" class="form-control" id="validationCustom03" placeholder="Número de cuenta"
+                      required>
+                    <div class="invalid-feedback">
+                      Ingrese su número de cuenta bancaria.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" id="guardarFormaPago" class="btn btn-success btn-lg btn-block">Comprar</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+    </div>
+    </form>
+
+<div id="alertaCompra"></div>
+
   </div>
+
 
   <div id="spinner-wrapper">
     <div class="lds-ring">
@@ -103,9 +346,9 @@
       <div></div>
     </div>
   </div>
-  <script src="js/jquery-3.4.1.min.js">
-  </script>
+  <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/e6559d6a55.js" crossorigin="anonymous"></script>
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>

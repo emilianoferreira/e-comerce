@@ -146,3 +146,7 @@ a.custom-card:hover {
   color: rgb(184, 184, 184);
   margin-left: 45px;
 }
+
+.botonesEnvio{
+  place-items: center;
+}

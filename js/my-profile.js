@@ -20,12 +20,15 @@ function mostrarDatos() {
     let datosLocal = JSON.parse(localStorage.getItem("perfil"));//convierte estructura json en objeto
 
     console.log(datosLocal);
-
+if(datosLocal === ""){
+    
+}else{
     document.getElementById("nombreUsuario").innerHTML += datosLocal.nombre;
     document.getElementById("edadUsuario").innerHTML += datosLocal.edad;
     document.getElementById("emailUsuario").innerHTML += datosLocal.email;
     document.getElementById("contactoUsuario").innerHTML += datosLocal.celular; 
-
+    
+}
    
 }
 
