@@ -31,7 +31,7 @@ function mostrarProductos() {
 
     }
 
-    document.getElementById("productos_carrito").innerHTML += html
+    document.getElementById("productos_carrito").innerHTML = html
     juntarData();
     subtotalCarrito();
     //calcEnvio();
@@ -137,17 +137,27 @@ function validarPago() {
         return false
     }
 }
+function validarPagoBanco() {
+    let cuenta = document.getElementById("validationCustom04").value;
 
-function alertaCompra() {
-    let compraRealizada = `<div class="alert alert-success" role="alert">
-<h4 class="alert-heading">Well done!</h4>
-<p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-<hr>
-<p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-</div>`
-
-document.getElementById("alertaCompra").innerHTML += compraRealizada;
+    if (cuenta !== "") {
+        return true
+    } else {
+        alert("Complete todos los campos para continuar")
+        return false
+    }
 }
+
+// function alertaCompra() {
+//     let compraRealizada = `<div id="mensajeCompra" class="alert alert-success" role="alert">
+// <h4 class="alert-heading">Well done!</h4>
+// <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+// <hr>
+// <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+// </div>`
+
+// document.getElementById("alertaCompra").innerHTML += compraRealizada;
+// }
 
 // tengo que calcular 
 document.addEventListener("DOMContentLoaded", function (e) {
@@ -182,12 +192,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
         let validarMPago = validarPago()
         if (validarMPago) {
             $('#exampleModal').modal('hide')
-            $('.compraRealizada').alert('show')
+            // $('#mensajeCompra').alert('show')
             alert("Compra realizada con exito!")
             window.location.href = "index.html";
         } else {
-            alert("complete forma de pago")
+            alert("Complete forma de pago")
         }
-    }
-    )
+    })
+
+    
 })
