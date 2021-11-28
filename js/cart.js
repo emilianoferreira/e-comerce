@@ -8,6 +8,18 @@ let subtotal = 0;
 let total = 0;
 let productUnitCost = 0;
 let metodoDePago = false;
+let objetoCompra = {
+    nombre: "",
+    calle: "",
+    departamento: "",
+    postal: "",
+    numTarj: "",
+    codTarj: "",
+    venTarj: "",
+    subtotal: "",
+    envio: "",
+    carrito: [],
+};
 
 function mostrarProductos() {
     let html = ""
@@ -131,22 +143,26 @@ function validarPago() {
     let codigo = document.getElementById("validationCustom06").value;
 
     if ((num !== "") && (vencimiento !== "") && (codigo !== "")) {
+        objetoCompra.numTarj = num;
+        objetoCompra.codTarj = codigo;
+        objetoCompra.venTarj = vencimiento;
         return true
-    } else {
-        alert("Complete todos los campos para continuar")
-        return false
-    }
-}
-function validarPagoBanco() {
-    let cuenta = document.getElementById("validationCustom04").value;
 
-    if (cuenta !== "") {
-        return true
     } else {
         alert("Complete todos los campos para continuar")
         return false
     }
 }
+// function validarPagoBanco() {
+//     let cuenta = document.getElementById("validationCustom04").value;
+
+//     if (cuenta !== "") {
+//         return true
+//     } else {
+//         alert("Complete todos los campos para continuar")
+//         return false
+//     }
+// }
 
 // function alertaCompra() {
 //     let compraRealizada = `<div id="mensajeCompra" class="alert alert-success" role="alert">
@@ -192,13 +208,29 @@ document.addEventListener("DOMContentLoaded", function (e) {
         let validarMPago = validarPago()
         if (validarMPago) {
             $('#exampleModal').modal('hide')
-            // $('#mensajeCompra').alert('show')
+            objetoCompra.nombre = localStorage.getItem("user");
+            objetoCompra.calle = document.getElementById("validationCustom01").value;
+            objetoCompra.departamento = document.getElementById("validationCustom02").value;
+            objetoCompra.postal = document.getElementById("validationCustom03").value;
+            objetoCompra.subtotal = subtotal;
+            objetoCompra.envio = comisionEnvio;
+            objetoCompra.carrito = productosCarrito;
+
+        fetch("http://localhost:3000/compraExitosa",{
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(objetoCompra) 
+        })
+
             alert("Compra realizada con exito!")
-            window.location.href = "index.html";
+            // window.location.href = "index.html";
+            console.log(objetoCompra)
         } else {
             alert("Complete forma de pago")
         }
     })
 
-    
+
 })
