@@ -114,6 +114,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
         showCategoriesList();
     });
 
+    document.getElementById("nossabtn").addEventListener("click", function(){
+        window.location = home.html
+    })
+    
     document.getElementById("rangeFilterCount").addEventListener("click", function () {
         //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
         //de productos por categoría.
