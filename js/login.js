@@ -5,9 +5,12 @@
 
 function validar() {
     let user = document.getElementById("user").value; // Setea la variable nombre con el usuario ingresado en el login
-    let pass = document.getElementById("pass").value;
+    let pass = document.getElementById("pass").value; // Setea la contrase;a en la variable "pass"
 
-    if ((user !== "") && (pass !== "") && (user.length >= 6 && user.length <= 8) && (pass.length >= 6 && pass.length <= 8)) {
+
+    //Funcion que evalua que los campos user y pass cumplan 
+    //      1. Que no esten vacios - 2. Que su largo sea mayor o igual a 6 caracteres y menor o igual a 10
+    if ((user !== "") && (pass !== "") && (user.length >= 6 && user.length <= 10) && (pass.length >= 6 && pass.length <= 10)) {
         
         setUser();
         window.location.href = "products.html";

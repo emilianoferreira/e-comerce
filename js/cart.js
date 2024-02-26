@@ -21,6 +21,7 @@ let objetoCompra = {
     carrito: [],
 };
 
+//Aca puedo usar node ##############
 function mostrarProductos() {
     let html = ""
     for (let i = 0; i < productosCarrito.length; i++) {

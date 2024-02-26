@@ -16,7 +16,8 @@
 </head>
 
 <style>
-  html,body {
+  html,
+  body {
     height: 100%;
   }
 
@@ -47,6 +48,7 @@
 
   input {
     margin: 10px;
+    width: 400px;
   }
 
   .btn {
@@ -63,9 +65,15 @@
     <div><img src="img\login.png"></div>
     <form>
       <h3>Login</h3>
-      <input type="text" id="user"  placeholder="Username">
-      <input type="password" id="pass"  placeholder="Contraseña"><br>
+      <div class="m-2">
+        <input type="text" id="user" placeholder="Usuario"><br>
+        <input type="password" id="pass" placeholder="Contraseña"><br>
+      </div>
+
       <input type="button" class="btn" value="Ingresar" onclick="validar()">
+      <a href="#">
+        <p>Olvidaste la contraseña?</p>
+      </a>
     </form>
   </div>
   <script src="js/init.js"></script>
